@@ -1,4 +1,8 @@
 MailClient::Application.routes.draw do
+  get "mail/index"
+
+  match "mail/:box"=> 'mail#box', as: :box
+
   post "user/login"
 
   # The priority is based upon order of creation:

@@ -11,8 +11,11 @@ class MailConnection
     return self
   end
 
-  def inbox_count
-    @imap.examne("INBOX")
+  # Returns number of e-mails in a mailbox
+  # box:String
+  #   Name of the mailbox
+  def count(box)
+    @imap.examine(box)
     imap.search(['ALL']).count
   end
 
