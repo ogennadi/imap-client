@@ -1,2 +1,6 @@
 %h2= params[:box]
 %p Showing x of #{@count}
+
+%ul
+- @boxes.each do |name|
+  %li= link_to name, box_path(name)

@@ -4,6 +4,7 @@ gem 'rails', '3.2.11'
 
 gem 'haml-rails', '0.3.5'
 gem 'sqlite3',    '1.3.6'
+gem 'pry-rails',  :group => :development
 
 
 # Gems used only for assets and not required

@@ -19,6 +19,12 @@ class MailConnection
     imap.search(['ALL']).count
   end
 
+  # Returns the list of mailbox names
+  # => [String]
+  def boxes
+    @imap.list("", "*").map(&:name)
+  end
+
   def logged_in?
     @logged_in
   end

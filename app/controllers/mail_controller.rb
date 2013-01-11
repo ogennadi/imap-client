@@ -10,5 +10,6 @@ class MailController < ApplicationController
     
     mc = $mail_connection
     @count = mc.count(params[:box])
+    @boxes = mc.boxes
   end
 end
