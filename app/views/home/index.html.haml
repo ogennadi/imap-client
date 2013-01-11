@@ -1,1 +1,10 @@
 %h1 Welcome to Mail Client!
+
+= form_tag user_login_path do
+  = label_tag(:username, "E-mail:")
+  = text_field_tag(:username)
+
+  = label_tag(:password, "Password:")
+  = password_field_tag(:password)
+
+  = submit_tag("Search")

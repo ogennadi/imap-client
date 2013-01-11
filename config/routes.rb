@@ -1,4 +1,6 @@
 MailClient::Application.routes.draw do
+  post "user/login"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
