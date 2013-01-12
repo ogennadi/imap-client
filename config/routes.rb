@@ -1,7 +1,7 @@
 MailClient::Application.routes.draw do
   get "mail/index"
 
-  match "mail/:box"=> 'mail#box', as: :box
+  match "mail/:box"=> 'mail#box', as: :box, :constraints => { :box => /[^\/]+/ } 
 
   post "user/login"
 
