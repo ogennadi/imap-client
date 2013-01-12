@@ -22,7 +22,8 @@ class MailConnection
   # Returns the list of mailbox names
   # => [String]
   def boxes
-    @imap.list("", "*").map(&:name)
+    nonfolder_boxes = @imap.list("", "*").keep_if{|b| b.attr.include?(:Hasnochildren)}
+    return nonfolder_boxes.map(&:name)
   end
 
   def logged_in?
