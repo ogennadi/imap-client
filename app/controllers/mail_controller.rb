@@ -6,10 +6,10 @@ class MailController < ApplicationController
   def box
     if !($mail_connection && $mail_connection.logged_in?)
       redirect_to root_path, alert: "Your session was disconnected. Please login again"
+    else
+      mc = $mail_connection
+      @count = mc.count(CGI.unescape(params[:box]))
+      @boxes = mc.boxes
     end
-    
-    mc = $mail_connection
-    @count = mc.count(params[:box])
-    @boxes = mc.boxes
   end
 end

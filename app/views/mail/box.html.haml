@@ -3,4 +3,4 @@
 
 %ul
 - @boxes.each do |name|
-  %li= link_to name, box_path(name)
+  %li= link_to name, box_path(CGI.escape(name))
