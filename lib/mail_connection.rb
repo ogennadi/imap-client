@@ -15,8 +15,7 @@ class MailConnection
   # box:String
   #   Name of the mailbox
   def count(box)
-    @imap.examine(box)
-    imap.search(['ALL']).count
+    @imap.status(box, ["MESSAGES"])["MESSAGES"]
   end
 
   # Returns the list of mailbox names
@@ -24,6 +23,10 @@ class MailConnection
   def boxes
     nonfolder_boxes = @imap.list("", "*").keep_if{|b| b.attr.include?(:Hasnochildren)}
     return nonfolder_boxes.map(&:name)
+  end
+
+  def email
+
   end
 
   def logged_in?
