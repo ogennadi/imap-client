@@ -2,6 +2,7 @@ require 'net/imap'
 
 class MailConnection
   @logged_in = false
+  @box_name   = nil
 
   def initialize(username, password)
     @imap = Net::IMAP.new('imap.gmail.com', ssl: true)
@@ -25,8 +26,10 @@ class MailConnection
     return nonfolder_boxes.map(&:name)
   end
 
-  def email
-
+  # => [Net:IMAP:Envelope]
+  def email_metas(box, range)
+    @imap.examine(box)
+    @imap.fetch(range, "ENVELOPE").map{|fd|fd.attr["ENVELOPE"]}
   end
 
   def logged_in?

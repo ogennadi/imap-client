@@ -1,6 +1,18 @@
 %h2= params[:box]
-%p Showing x of #{@count}
+%p Showing #{@emails_on_page} of #{@count}
 
 %ul
 - @boxes.each do |name|
   %li= link_to name, box_path(CGI.escape(name))
+
+%h3 E-mails
+%table
+  %tr
+    %th From
+    %th Subject
+    %th Date
+  - @email_metas.each do |meta|
+    %tr
+      %td #{meta.from[0].mailbox}@#{meta.from[0].host}
+      %td= meta.subject
+      %td= meta.date
