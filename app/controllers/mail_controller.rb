@@ -17,7 +17,7 @@ class MailController < ApplicationController
       @boxes          = mc.boxes
       @emails_on_page = [@count, PER_PAGE].min
       @email_metas    =
-        @count == 0 ? [] : mc.email_metas(box_name, 1..@emails_on_page)
+        @count == 0 ? [] : mc.email_metas(box_name, (@count..@count-@emails_on_page+1)).reverse
     end
   end
 end

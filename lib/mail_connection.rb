@@ -29,7 +29,8 @@ class MailConnection
   # => [Net:IMAP:Envelope]
   def email_metas(box, range)
     @imap.examine(box)
-    @imap.fetch(range, "ENVELOPE").map{|fd|fd.attr["ENVELOPE"]}
+    envelope = @imap.fetch(range, "ENVELOPE")
+    envelope ? envelope.map{|fd|fd.attr["ENVELOPE"]} : []
   end
 
   def logged_in?
